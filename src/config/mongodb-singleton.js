@@ -1,4 +1,4 @@
-import config from './env.config.js';
+import {mongoUrl, dbName} from './env.config.js';
 import mongoose from 'mongoose';
 
 class MongoSingleton {
@@ -19,7 +19,7 @@ class MongoSingleton {
 
   #connectMongoDB = async ()=>{
       try {
-          await mongoose.connect(mongoUrl); 
+          await mongoose.connect(mongoUrl + dbName); 
           console.log("Conectado con éxito a MongoDB usando Moongose.");
       } catch (error) {
           console.error("No se pudo conectar a MongoDB usando Moongose: " + error);

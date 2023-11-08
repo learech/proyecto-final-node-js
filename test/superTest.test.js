@@ -12,7 +12,7 @@ describe('Comisión 44705 Coderhouse project Test', ()=>{
         this.mockUser = {
             firstName: "User Test",
             lastName: "Coder",
-            age: 25,
+            age: 30,
             email:'test@test.com.ar',
             password: "123456"
         };
