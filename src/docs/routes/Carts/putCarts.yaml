@@ -1,0 +1,61 @@
+paths:
+  /api/cart/{cid}:
+    put:
+      summary: Editar un carrito.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id del carrito que se desea editar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Cart'
+
+        "400":
+          description: Se envio un dato inesperado.
+        "500":
+          description: Error inesperado en el servidor, no se pudo manejar el proceso.
+  
+  /api/cart/{cid}/product/{pid}:
+    put:
+      summary: Edita un producto al carrito buscado por id.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id del carrito que desea buscar.
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que desea editar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Cart'
+
+        "400":
+          description: Se envio un dato inesperado.
+        "500":
+          description: Error inesperado en el servidor, no se pudo manejar el proceso.
+  
