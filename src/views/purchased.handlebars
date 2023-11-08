@@ -2,9 +2,9 @@
 
 <div class="container">
     <div class="ticket">
-        <h5>Thank you {{newTk.purchaser}}</h5>
-        <h6>your ticket was generated, </h6>
-        <h6>to complete the purchase click on buy!</h6><br>
+        <h5>Gracias {{newTk.purchaser}}</h5>
+        <h6>Tu ticket ha sido generado, </h6>
+        <h6>Para completar la operación clickea en comprar</h6><br>
         <h6>Your ticket ID: <strong>{{newTk.id}}</strong></h6>
     </div>
     <div class="box"> 
@@ -16,9 +16,9 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                    <th scope="col">title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
                 
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
                 
                 document.getElementsByClassName('stripe-button-el')[0].style.display='none';
             </script>
-            <button type="submit" class="btn btn-outline-success btn-block">Pay with Stripe</button>
+            <button type="submit" class="btn btn-outline-success btn-block">Pagar con Stripe</button>
         </form>
     </div>
 </div>

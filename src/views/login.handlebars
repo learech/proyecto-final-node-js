@@ -12,30 +12,30 @@
                <br><h5>{{message}}</h5><br>
           {{else}}
               <div class="sign-title">
-                <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                <p class="lead fw-normal mb-0 me-3">Inicia con</p>
                 <button type="button" class="btn btn-link btn-floating mx-1" style=" width: 40px; height: 40px;">
                     <a  href="/auth/github"><i class="fab fa-github"></i></a> 
                   </button>
               </div>
               <br>
               <div class="d-flex flex-row">
-                <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                <p class="text-center fw-bold mx-3 mb-0">O</p>
               </div><br>
           {{/if}}
           
           <div class="form-outline mb-4">
             <input type="email" id="email" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" name="email" required/>
+              placeholder="Enter a valid email address" name="email" requerido/>
             
           </div>
 
           <div class="form-outline mb-3">
             <input type="password" id="password" class="form-control form-control-lg"
-              placeholder="Enter password" name="password" required/>
+              placeholder="Enter password" name="password" requerido/>
           </div>
           <br> 
           <div class="d-flex justify-content-between align-items-center">
-            <a href="/api/email/forgot-password" class="forgot">Forgot password?</a>
+          <a href="/api/email/forgot-password" class="forgot">Olvidaste tu contraseña?</a>
           </div>
           <div class="text-center text-lg-start mt-4 pt-2">
             <a href="/session/profile"> 
@@ -43,8 +43,8 @@
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             </a>
 
-            <h6 class=" fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/session/register"
-                class="link-danger">Register</a></h6>
+            <h6 class=" fw-bold mt-2 pt-1 mb-0">No tienes una cuenta? <a href="/session/register"
+                class="link-danger">Registro</a></h6>
           </div>
 
         </form>
