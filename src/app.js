@@ -1,117 +1,97 @@
-import express from 'express'
-import __dirname from './utils/path.js'
-const app = express()
-import { port, mongoUrl, secret} from './config/env.config.js'
+import express from 'express';
+import routes from './routes/app.routes.js';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import { __dirname, connectMongo, connectSocket } from './utils.js';
+import path from 'path';
+import handebars from 'express-handlebars';
+import cookieParser from 'cookie-parser';
+import { iniPassport } from './config/passport.config.js';
+import passport from 'passport';
+import env from './config/env.config.js';
+import compression from 'express-compression';
+import errorHandler from './middlewares/error.js'
+import { addLogger, logger } from './middlewares/logger.js';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
 
-// Public Folder
-app.use(express.static(__dirname + '/public'))
-app.use(express.urlencoded({ extended: true }))
 
-//Sessions 
-import session from 'express-session'
-import cookieParser from 'cookie-parser'
-import MongoStore from 'connect-mongo'
+const mongoKey = env.DB_PASSWORD
+const PORT = env.PORT || 8080;
+const app = express();
 
-app.use(cookieParser())
-app.use(session({
-  store: MongoStore.create({
-    mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
-    mongoUrl: mongoUrl
-  }),
-  secret: secret,
-  resave: false,
-  saveUninitialized: false
 
-}))
 
-// Passport Local-Passport
-import initializePassport from './config/passport.config.js'
-import passport from "passport"
-initializePassport()
-app.use(passport.initialize())
-app.use(passport.session())
-
-// Logger
-import addLogger from './utils/logger.js'
-app.use(addLogger)
-
-// Swagger
-import { swaggerSpecs } from './utils/swaggerSpecs.js'
-import swaggerUi from 'swagger-ui-express'
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs)) // Documentación
-
-// Routes
-import { homeView } from './controller/views.controller.js'
-app.get('/', homeView)
-
-//Views
-import {routesViews} from './routes/views.routes.js'
-app.use('/views', routesViews)
-
-// Admin
-import {routesAdmin} from './routes/admin.routes.js'
-app.use('/api/admin', routesAdmin)
-
-//Products
-import routesProduct from './routes/products.routes.js'
-app.use('/api/product', routesProduct)
-
-//Cart
-import routesCart from './routes/cart.routes.js'
-app.use('/api/cart', routesCart)
-
-// Users 
-import {routesUsers} from './routes/user.routes.js'
-app.use('/api/user', routesUsers)
-
-// Sessions
-import sessions from './routes/sessions.routes.js'
-app.use('/session', sessions)
-
-// Auth.Passport
-import authPassport from './routes/passport.routes.js'
-app.use('/auth', authPassport)
-
-// Mailing
-import emailRoute from './routes/email.routes.js'
-app.use('/api/email', emailRoute)
-
-// Twilio
-import smsRoute from './routes/sms.routes.js'
-app.use('/api/sms', smsRoute)
-
-// Mocks
-import mocksRoute from './routes/mocks.routes.js'
-app.use('/api/mocks', mocksRoute)
-
-// Logger
-import loggerRoute from './routes/logger.routes.js'
-app.use('/api/logger', loggerRoute)
+// Middlewares
+app.use(addLogger);
+app.use(express.json()); // es para parsear el body que viene en el post
+app.use(compression()); // es para comprimir los json que se trafiquen. La configuración extra '{brotli: {enabled: true, zlib: {}}}' es para que utilice Brotli
+app.use(express.urlencoded({ extended: true}));
+app.use(express.static(path.join(__dirname, 'public')));  // Para aclarar que 'public' está dentro de /src
 
 // Handlebars
-import handlebars from 'express-handlebars'
+app.engine('handlebars', handebars.engine());
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
 
-app.engine('handlebars',handlebars.engine());
-app.set('views',__dirname+'/views')
-app.set('view engine','handlebars');
-app.use(express.static(__dirname+'/public'));
+// Sessions
+app.use(cookieParser());
+app.use(
+    session({
+      store: MongoStore.create({ mongoUrl:`mongodb+srv://rechleandroluis1:${mongoKey}@cluster0.kpxjltn.mongodb.net/ecommerce?retryWrites=true&w=majority`, ttl: 1000 }),
+      secret: 'sebaquerido',
+      resave: true,
+      saveUninitialized: true,
+    })
+  );
 
-// Sockets
-import http from 'http'
-const server = http.createServer(app);
-import connectSocket from './utils/socket.js'
-connectSocket(server)
+// Passport
+iniPassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Documentation
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.1',
+    info: {
+      title: 'Documentation CoderBackend API REST',
+      description: 'Documentation example using Swagger.',
+      version: '1.0.0',
+    },
+    servers: [
+      {
+        url: `http://localhost:${PORT}/api`,
+        description: 'Development server',
+      },
+    ],
+  },
+  apis: [`${__dirname}/docs/**/*.yaml`],
+};
+
+const specs = swaggerJSDoc(swaggerOptions);
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
+// Routes
+app.use('/', routes);
+
+// Middleware de error
+app.use(errorHandler);
 
 
-// Server
-server.listen(port, () => {
-  console.log('Server is running on port: ' + port)
+// ---- || ----
 
-})
+const httpServer = app.listen(PORT, () => {
+    logger.info(`🚀 Server is up and run on port ${PORT} 🚀`);
+});
 
-app.get("*", (req, res) => {
-  return res.status(404).json({
-    status: "error",
-    message: "Not Found"
-  })
-})
+httpServer.on('error', (error) => {
+    logger.error(error.message)
+});
+
+
+// MongoDB
+connectMongo();
+
+// Socket
+connectSocket(httpServer);

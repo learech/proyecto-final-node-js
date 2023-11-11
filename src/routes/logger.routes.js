@@ -1,7 +1,9 @@
-import express from 'express'
-import getLogger from '../controller/logger.controller.js'
-import { goToLogin, isAdmin } from "../middlewares/auth.middleware.js"
+import express from 'express';
+import { getLoggerTesting } from '../controllers/logger.controllers.js';
 
-export const router = new express.Router();
 
-router.get('/', goToLogin,isAdmin, getLogger);
+const router = express.Router();
+
+router.get('/', getLoggerTesting);
+
+export default router;

@@ -1,0 +1,8 @@
+
+
+class MessagesMongoDAO {
+
+
+}
+
+export {MessagesMongoDAO}

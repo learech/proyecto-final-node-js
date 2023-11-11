@@ -1,19 +1,38 @@
-import express from "express"
-import passport from "passport"
-import { goToLogin, isUser } from "../middlewares/auth.middleware.js"
-import { sessionGetRegister, sessionPostRegister, sessionGetLogin, sessionPostLogin, sessionGetProfile, sessionGetLogout, sessionGetFailedRegister, getApiSession, sessionGetError } from '../controller/sessions.controller.js'
+import express from 'express';
+import passport from 'passport';
+import { isAdmin, isLogged, isUser, redirectIfLoggedIn } from '../middlewares/auth.js';
+import { 
+    getAdministrationSessionsController,
+    getCurrentSessionsController,
+    getFailLoginSessionsController,
+    getFailRegisterSessionsController,
+    getGithubCallbackSessionsController,
+    getLoginSessionsController, 
+    getLogoutSessionsController, 
+    getProfileSessionsController, 
+    getRegisterSessionsController, 
+    passportLoginSessionsController,
+    passportRegisterSessionsController
+} from '../controllers/sessions.controllers.js';
 
-export const router = new express.Router(); 
 
-router.use(express.json());
-router.use(express.urlencoded({extended:true}));
- 
-router.get('/register', sessionGetRegister);
-router.post('/register',passport.authenticate("register-passport", {failureRedirect: "/sessions/failed-register",}),sessionPostRegister);
-router.get("/login", sessionGetLogin);
-router.post("/login",passport.authenticate("login-passport", {failureRedirect: "/session/register",}),sessionPostLogin);
-router.get('/current', isUser, getApiSession);
-router.get("/profile",goToLogin, sessionGetProfile);
-router.get("/logout", sessionGetLogout);
-router.get("/failed-register",sessionGetFailedRegister);
-router.get('*', sessionGetError );  
+const router = express.Router();
+
+router.get('/', redirectIfLoggedIn, getLoginSessionsController)
+router.get('/login', redirectIfLoggedIn, getLoginSessionsController);
+router.get('/register', redirectIfLoggedIn, getRegisterSessionsController);
+router.get('/profile', isLogged, getProfileSessionsController);
+router.get('/logout', getLogoutSessionsController);
+router.get('/administration', isAdmin, getAdministrationSessionsController);
+router.get('/failregister', getFailRegisterSessionsController);
+router.get('/faillogin', getFailLoginSessionsController);
+router.get('/current', getCurrentSessionsController);
+
+// PASSPORT GITHUB
+router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
+router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }), getGithubCallbackSessionsController);
+
+router.post('/login', passport.authenticate('login', { failureRedirect: '/api/sessions/faillogin' }), passportLoginSessionsController);
+router.post('/register', passport.authenticate('register', { failureRedirect: '/api/sessions/failregister' }), passportRegisterSessionsController);
+
+export default router;

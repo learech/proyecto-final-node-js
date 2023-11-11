@@ -1,0 +1,8 @@
+
+
+class MessagesFsDAO {
+
+
+}
+
+export {MessagesFsDAO}

@@ -1,25 +1,15 @@
-<div class="box">
-        <h2>Chat</h2><br><br>
-    <div class="container">
-        <div class="chat-box p-3 mb-2 bg-dark text-white">
-            <div id="caja"></div>
-        </div><br><br>
-        <div class="form-box">
-           
-            <form onsubmit="return addMessage()" class="p-3 mb-2 bg-dark text-white" style="height: 300px;">     
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="Your email....">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" id="message" rows="6"  placeholder="Your message..."></textarea>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-primary" type="submit" >Send</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+    <section class="chat-box">
 
-<script src="/socket.io/socket.io.js"></script> 
-<script src="../public/js/chat.js"></script>
+        <h3 class="title">Welcome to chat-box</h3>
+
+        <div class="msg-container">
+            <div id="div-msgs"></div>
+            <textarea id="chat-box" class="chat-input" name="chatbox" type="text" value="" placeholder="Escriba aquí su mensaje"></textarea>
+        </div>
+
+    </section>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>

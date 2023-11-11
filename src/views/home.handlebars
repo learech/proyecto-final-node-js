@@ -1,19 +1,12 @@
- <div class="container">
-    <h4 class="title">SebAR Futsal Home</h4>
- </div>
- <div class="contenedor-cards">   
-    {{#each products}}
-             <div class="card" style="width: 15rem;">
-            <img src="https://via.placeholder.com/180x180" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{this.title}}</h5>
-                   <p class="card-text">Descripción: {{this.description}}</p>
-                <p class="card-text">Precio: $<strong>{{this.price}}</strong>  || stock: {{this.stock}}</p>
-            </div>
-            <div class="card-body">
-            <button id="{{this._id}}" class="btn btn-primary">SEBAR FUTSAL</button>
-            </div>
-        </div>
-     
-    {{/each}}
-</div>
+<section class="home">
+    <h1 class="welcome">Welcome to SebAR Futsal</h1>
+    <h3 class="hello">Hello, <span>{{user.firstName}}</span> !</h3>
+    <a href="cart/{{user.cartId}}">🛒</a>
+    <h3 class="hello"><a href="products">Products</a></h3>
+
+    <p class="greeting">Thank you for registering on our website. We have everything you need for your sports practice.</p>
+    <p class="greeting">For inquiries, complaints, or orders, do not hesitate to contact us.</p>
+    <p class="greeting">Enjoy our website!</p>
+    <p class="greeting">"We breathe Futsal."</p>
+    <a class="logout" href='/api/sessions/logout'>Logout</a>
+</section>

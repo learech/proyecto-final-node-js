@@ -1,33 +1,19 @@
- <a  id="{{cart}}" href="#" class="idCart"></a>
-    <div class="box-total">
-        <a class="btn btn-outline-primary mt-2 ms-2 me-2" href='/api/cart/{{cart}}/purchase'>Purchase</a>
-        <h5>Total: $ {{amount}}</h5>
-        <h5>Total Items:  {{totalquantity}}</h5> 
-    </div>
-    <div class="box-table">
-        <table class="table table-striped">
-            <thead class="">
-                <tr class="tr">
-                <th scope="col">Thumbnail</th>
-                <th scope="col">Título</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Borrar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each products}}
-                <tr class="tr">
-                <td><img src="{{this.thumbnail}}"  class="table-img" alt={{this.title}}></td>
-                <td><h5 class="table-title">{{this.title}}</h5></td>
-                <td><h5>$<strong>{{this.prices}}</strong></h5></td>
-                <td><h5>  {{this.quantity}}</h5></td>
-                <td><button class="link" onclick="delProduct('{{this.id}}')"><img class="trash-icon" src="/images/icons8-trash-48.png" alt="Trach icon"></button></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
+<div class="flex-container prod-container">
+  <h2>Cart</h2>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../public/js/cart.js"></script>
+{{!-- CARDS --}}
+<div class="cart-tab-container">
+  {{#each cart}}
+    <div class="cart-prod-tab" id="{{id}}">
+      <h2 class="cart-prod-name">{{title}}</h2>
+      <p class="cart-prod-price">Unit price ${{price}}</p>
+      <p class="cart-prod-stock">Quantity: {{quantity}} units</p>
+      <p class="cart-prod-total">Total: ${{total}}</p>
+      <button class="delete-from-cart-button" id="{{id}}" onclick="deleteFromCart('{{id}}')">Delete</button>
+    </div>
+  {{/each}}
+</div>
+
+<a class="purchase-cart" href="/api/carts/{{user.cartId}}/purchase">Purchase</a>
+<a class="back-to-products" href='/views/products'>Back to products</a>

@@ -1,40 +1,23 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 import { Command } from 'commander';
-const program = new Command()
 
-program
-    .option('-d', 'Variable para debug', false)
-    .option('-p <port>', 'Puerto del servidor', 8080)
-    .option('--mode <mode>', 'Modo de trabajo', 'develop')
-program.parse()
+const program = new Command();
+program.option('--mode <mode>', 'Development mode', 'DEVELOPMENT');
+program.parse();
 
-
-console.log("Mode Option: ", program.opts().mode);
-const environment = program.opts().mode;
 dotenv.config({
-    path: environment === 'production'? './src/config/.env.production':'./src/config/.env.development' 
-})
+  path: program.opts().mode === 'DEVELOPMENT' ? './.env.development' : './.env.production',
+});
 
+process.env.NODE_ENV = program.opts().mode;
 
-
-export default  {
-    port:process.env.PORT || 3000, 
-    mongoUrl: process.env.MONGO_URL, 
-    dbName: process.env.DATABASE_NAME,
-    secret: process.env.SECRET,
-    persistence: process.env.PERSISTENCE,
-    githubClientId: process.env.CLIENT_ID_GITHUB,
-    githubSecret: process.env.CLIENT_SECRET_GITHUB,
-    githubCallBack: process.env.CALL_BACK_URL_GITHUB,
-    gmailAccount:process.env.GMAIL_ACCOUNT,
-    gmailAppPass: process.env.GMAIL_APP_PASSWD,
-    twilioSID: process.env.TWILIO_ACCOUNT_SID,
-    twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
-    twilioNumber: process.env.TWILIO_SMS_NUMBER,
-    userCellNumber: process.env.CELL_NUMBER,
-    stripePublishableKey: process.env.STRIPE_APP_PUBLIC_KEY,
-    stripeSecretKey:process.env.STRIPE_APP_SECRET_KEY,
-    environment: environment
-
-} 
- 
+export default {
+    PORT: process.env.PORT,
+    NODE_ENV: process.env.NODE_ENV,
+    PERSISTENCE: process.env.PERSISTENCE,
+    DB_PASSWORD: process.env.DB_PASSWORD,
+    MONGO_URL: process.env.MONGO_URL,
+    GITHUB_APP_ID: process.env.GITHUB_APP_ID,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+}

@@ -1,11 +1,15 @@
-import { Router } from 'express'
-import { goToLogin, isUserPremium, isAdminPremium } from "../middlewares/auth.middleware.js"
-import { productsView, cartView, chatView, RealTimeProductsView, getViewsError } from '../controller/views.controller.js'
+import express from 'express';
+import { 
+    getCartByIdViewsController,
+    getProductsViewsController, 
+    getUserViewsController 
+} from '../controllers/views.controllers.js';
 
-export const router = Router();
+const router = express.Router();
 
-router.get('/products', productsView);
-router.get('/cart', goToLogin, isUserPremium, cartView);
-router.get("/chat", goToLogin, isUserPremium, chatView);
-router.get("/realTimeProducts", goToLogin, isAdminPremium, RealTimeProductsView); 
-router.get('*', getViewsError); 
+router.get('/', getUserViewsController);
+router.get('/products', getProductsViewsController);
+router.get('/cart/:cid', getCartByIdViewsController);
+
+
+export default router;

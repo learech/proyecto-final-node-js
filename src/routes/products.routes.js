@@ -1,19 +1,23 @@
-import express from "express"
-import { isAdminPremium, goToLogin } from "../middlewares/auth.middleware.js"
-import { getWithQuerys, getProductById, addProduct, addManyProducts, deleteProduct, updateProduct, getProductError } from '../controller/products.controller.js'
+import express from 'express';
+import {
+    getProductsController, 
+    getProductByIdController, 
+    addProductController, 
+    deleteProductByIdController, 
+    updateProductController,
+} from '../controllers/products.controllers.js';
+import { isAdmin, isLogged } from '../middlewares/auth.js';
 
-export const router = new express.Router();
 
-router.use(express.json());   
-router.use(express.urlencoded({ extended: true }));
+const router = express.Router();
 
-router.get("/", getWithQuerys); 
-router.get("/:pid", isAdminPremium, getProductById);
-// router.post("/",goToLogin, isAdminPrimium, addProduct);  
-router.post("/",addProduct); // sin middlewares para test
-router.post("/many",goToLogin,isAdminPremium, addManyProducts);
-// router.delete("/:pid",goToLogin,isAdminPrimium, deleteProduct); 
-router.delete("/:pid",deleteProduct); // sin middelewares para Test 
-// router.put("/:id",goToLogin,isAdminPrimium,updateProduct);
-router.put("/:id",updateProduct); // sin middlewares para Test
-router.get("*", getProductError);
+// Routes
+    router.get( '/', isLogged, getProductsController);
+    router.get('/:pid', isLogged, getProductByIdController);
+    router.post('/',  addProductController);
+    router.delete('/:pid', isLogged, isAdmin, deleteProductByIdController);
+    router.put('/:pid', isLogged, isAdmin, updateProductController);
+
+
+
+export default router;

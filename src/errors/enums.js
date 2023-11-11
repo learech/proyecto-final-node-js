@@ -1,0 +1,11 @@
+const EErros = {
+    ROUTING_ERROR: 1,
+    INVALID_TYPE_ERROR: 2,
+    DATABASES_ERROR: 3,
+    INVALID_PRODUCT_FORMAT: 4,
+    PRODUCT_ALREADY_EXISTS: 5,
+    NO_STOCK: 6,
+    CART_EMPTY: 7,
+  };
+
+export {EErros}

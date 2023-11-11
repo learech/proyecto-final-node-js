@@ -1,54 +1,14 @@
-<section class="vh-100"><br>
-  <div class="container"> 
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5" >
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        
-        <form method="post" action="/session/login" >
-          {{#if message}}
-               <br><h5>{{message}}</h5><br>
-          {{else}}
-              <div class="sign-title">
-                <p class="lead fw-normal mb-0 me-3">Inicia con</p>
-                <button type="button" class="btn btn-link btn-floating mx-1" style=" width: 40px; height: 40px;">
-                    <a  href="/auth/github"><i class="fab fa-github"></i></a> 
-                  </button>
-              </div>
-              <br>
-              <div class="d-flex flex-row">
-                <p class="text-center fw-bold mx-3 mb-0">O</p>
-              </div><br>
-          {{/if}}
-          
-          <div class="form-outline mb-4">
-            <input type="email" id="email" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" name="email" requerido/>
-            
-          </div>
+<section class="form-section">
+  <h3 class="title">Login</h3>
 
-          <div class="form-outline mb-3">
-            <input type="password" id="password" class="form-control form-control-lg"
-              placeholder="Enter password" name="password" requerido/>
-          </div>
-          <br> 
-          <div class="d-flex justify-content-between align-items-center">
-          <a href="/api/email/forgot-password" class="forgot">Olvidaste tu contraseña?</a>
-          </div>
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <a href="/session/profile"> 
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            </a>
-
-            <h6 class=" fw-bold mt-2 pt-1 mb-0">No tienes una cuenta? <a href="/session/register"
-                class="link-danger">Registro</a></h6>
-          </div>
-
-        </form>
-      </div>
-    </div>
+  <div class="form-container">
+    <form class="form-form" action='/api/sessions/login' method='POST'>
+      <input class="form-input" type='text' name='email' placeholder='email' />
+      <input class="form-input" name='password' placeholder='password' type='password' autocomplete='off' />
+      <input class="form-submit" type='submit' value='Login!' />
+    </form>
   </div>
+
+  <a class="redirect" href='/api/sessions/register'>Don't you have an account yet?</a>
+  <a class="redirect" href='/api/sessions/github'>Login with GitHub</a>
 </section>

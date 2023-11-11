@@ -1,12 +1,12 @@
-<br><br>
+<h1>Profile</h1>
 
-<div class="container">
-    {{#if data}}
-    <h3>Bienvenido {{data.firstName}} {{data.lastName}}</h3><br>
-    <h4>Email: {{data.email}}</h4>
-    {{else}}
-    <h3>Datos no enviados</h3>
-    {{/if}} 
-    <br><br>
-    <a class="btn" href="/session/logout">Logout</a>
-</div>
+email:
+{{user.email}}
+<br />
+isAdmin:
+{{user.isAdmin}}
+<br />
+<a href='/api/sessions/administration'>See Admin Data<a>
+
+<br />
+<a href='/api/sessions/logout'>Logout!</a>
