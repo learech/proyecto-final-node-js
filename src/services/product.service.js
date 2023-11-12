@@ -1,4 +1,4 @@
-import { ProductsDAO } from '../models/daos/app.daos.js';
+import { ProductsDAO } from '../services/dao/app.daos.js';
 import url from 'url';
 import CustomError from '../errors/customError.js';
 import {productFormatError}  from '../errors/customErrorMsgs.js';

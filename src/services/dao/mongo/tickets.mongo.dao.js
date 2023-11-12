@@ -1,5 +1,5 @@
 import { logger } from "../../../middlewares/logger.js";
-import { TicketSchema } from "../../schemas/tickets.schema.js";
+import { TicketSchema } from "../models/tickets.schema.js";
 
 class TicketsMongoDAO {
 

@@ -48,7 +48,7 @@ export async function connectMongo() {
 // --------------- SOCKET ---------------
 import {Server} from 'socket.io';
 import {productService} from './controllers/products.controllers.js';
-import { MsgsSchema } from "./models/schemas/msgs.schema.js";
+import { MsgsSchema } from "./services/dao/models/msgs.schema.js";
 
 
 export function connectSocket(httpServer) {

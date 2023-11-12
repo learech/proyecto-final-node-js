@@ -1,5 +1,5 @@
 
-import { userDTO } from '../models/DTO/user.dto.js'
+import { userDTO } from '../services/dto/user.dto.js'
 
 
 const getLoginSessionsController = async (req, res) => {

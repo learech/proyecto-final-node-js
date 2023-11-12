@@ -1,5 +1,5 @@
 import { logger } from "../../../middlewares/logger.js";
-import { CartSchema } from "../../schemas/cart.schema.js";
+import { CartSchema } from "../models/cart.schema.js";
 
 class CartMongoDAO {
 

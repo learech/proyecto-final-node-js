@@ -1,4 +1,4 @@
-import { CartsDAO, ProductsDAO } from "../models/daos/app.daos.js";
+import { CartsDAO, ProductsDAO } from "../services/dao/app.daos.js";
 import { TicketService } from "../services/ticket.service.js";
 
 const cartDAO = new CartsDAO();

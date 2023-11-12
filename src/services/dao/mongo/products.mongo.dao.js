@@ -1,5 +1,5 @@
 import { logger } from "../../../middlewares/logger.js";
-import { ProductsSchema } from "../../schemas/product.schema.js";
+import { ProductsSchema } from "../models/product.schema.js";
 
 class ProductMongoDAO {
     async getAll( query, params ) {
