@@ -1,24 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="es">
+  <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>My E-commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+  <body>
 
-    <title>SebAR Futsal</title>
-</head>
+    <div class="header-content displayRow">
 
-<body>
-    {{{body}}}
-    <script src="/js/index.js"></script>
-</body>
+      <div class="header-background displayRow">
+        <div>
+          <h2>SebAR FUTSAL</h2>
+        </div>
 
+        <ul class="displayRow">
+          <li>
+            <a class="Home" href="/"><h3>Home</h3></a>
+          </li>
+          <li>
+            <a class="Home" href="/productos"><h3>Productos</h3></a>
+          </li>
+          <li>
+            <a class="Home" href="/#"><h3>Contacto</h3></a>
+          </li>
+
+        </ul>
+
+        <div class="displayRow">
+          <ul class="displayRow">
+            <li>
+              <a href="/cart">Carrito</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="/login">Iniciar sesión</a>
+            </li>
+            <li>
+              <a href="/register">Registrarme</a>
+            </li>
+            <li>
+              <a href="/profile">Perfil</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="main-content">
+      {{{body}}}
+    </div>
+
+    <footer class="footer-content">
+      <hr />
+
+      <div class="displayRow">
+        <div>
+          <p>Copyright</p>
+        </div>
+        <li>
+          <a href="/messages">Chat</a>
+        </li>
+      </div>
+    </footer>
+
+  </body>
 </html>

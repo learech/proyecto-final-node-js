@@ -1,19 +1,31 @@
-<div class="flex-container prod-container">
-  <h2>Cart</h2>
+<div class="cart-container">
+<h2>Mi Carrito</h2>
+<table class="contain-cart">
+  <thead class="tabla">
+    <tr>
+      <th>Code</th>
+      <th>Img</th>
+      <th>Title</th>
+      <th>Stock</th>
+      <th>Cantidad</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody id="template-cart">
+  </tbody>
+  <tfoot class="tabla">
+    <tr>
+      <td colspan="5">Total</td>
+      <td id="template-total"></td>
+    </tr>
+  </tfoot>
+</table>
 </div>
 
-{{!-- CARDS --}}
-<div class="cart-tab-container">
-  {{#each cart}}
-    <div class="cart-prod-tab" id="{{id}}">
-      <h2 class="cart-prod-name">{{title}}</h2>
-      <p class="cart-prod-price">Unit price ${{price}}</p>
-      <p class="cart-prod-stock">Quantity: {{quantity}} units</p>
-      <p class="cart-prod-total">Total: ${{total}}</p>
-      <button class="delete-from-cart-button" id="{{id}}" onclick="deleteFromCart('{{id}}')">Delete</button>
-    </div>
-  {{/each}}
+<div class="flex-end">
+  <button id="btn-purchease" class="btn-session">Comprar</button>
 </div>
 
-<a class="purchase-cart" href="/api/carts/{{user.cartId}}/purchase">Purchase</a>
-<a class="back-to-products" href='/views/products'>Back to products</a>
+<div id="contenedorTicket"></div>
+
+<script src="/static/js/cart.js"></script>

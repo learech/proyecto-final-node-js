@@ -1,5 +1,0 @@
-error: Prueba de log level warn!
-fatal: Prueba de log level Fatal!
-error: Prueba de log level Error![10:06:20] [ERROR]: listen EADDRINUSE: address already in use :::8080
-[10:57:21] [ERROR]: undefined
-[11:05:08] [ERROR]: undefined

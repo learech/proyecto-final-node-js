@@ -1,12 +1,17 @@
-<h1>Profile</h1>
+<h2 class="">Mi perfil</h2>
 
-email:
-{{user.email}}
-<br />
-isAdmin:
-{{user.isAdmin}}
-<br />
-<a href='/api/sessions/administration'>See Admin Data<a>
+<ul>
+  <li>Nombre: <span>{{first_name}}</span></li>
+  <li>Apellido: <span>{{last_name}}</span></li>
+  <li>Edad: <span>{{age}}</span></li>
+  <li>Rol: <span>{{roles}}</span></li>
+  <li>Email: <span>{{email}}</span></li>
+</ul>
 
-<br />
-<a href='/api/sessions/logout'>Logout!</a>
+<form action="/api/sessions/logout" method="get">
+  <button class="btn-session" type="submit">Cerrar sesión</button>
+</form>
+
+<li>
+  <a href="/admin">Administrar productos</a>
+</li>

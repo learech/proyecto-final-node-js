@@ -1,9 +1,0 @@
-
-
-
-class TicketsFsDAO {
-
-
-}
-
-export {TicketsFsDAO}
