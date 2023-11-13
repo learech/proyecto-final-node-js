@@ -6,6 +6,7 @@
 .imagen{
   width: 200px;
   height: 200px;
+  padding: 20px;
 }
 body {
   font-family: 'Oswald', sans-serif;
@@ -31,7 +32,7 @@ body {
 }
 
 .main-content {
-  min-height: 500px;
+  height: 1000px;
   padding-top: 100px;
   margin: 0px 15px;
 }
@@ -119,6 +120,7 @@ thead {
   border-radius: 10px;
   font-family: sans-serif;
   margin: 5px;
+  margin-bottom: 180px;
   height: 250px;
 }
 
@@ -131,10 +133,7 @@ thead {
   padding: 10px;
 }
 
-img {
-  padding: 20px;
-  padding-left: 0px;
-}
+
 
 .pie {
   background: #50e4fee2;

@@ -49,7 +49,7 @@ app.use(
       },
       ttl: 100,
     }),
-    secret: "mysecret",
+    secret: "secret",
     resave: true,
     saveUninitialized: true,
   })
