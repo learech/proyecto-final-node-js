@@ -164,24 +164,24 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #f9f9f9;
+  color: rgb(33, 7, 114);
 }
 
-.bruju {
+.futsal {
   margin: 8px 8px 0px 8px;
-  color: #87d4ec;
+  color: #18aad6;
 }
 
 .dialogo {
   display: flex;
   justify-content: start;
-  color: #f9f9f9;
+  color:rgb(33, 7, 114);
   width: 80vw;
   padding: 20px;
 }
 
 #username {
-  color: white;
+  color: rgb(204, 17, 17);
   margin-right: 10px;
   width: 30%;
 }
@@ -201,15 +201,15 @@ h1 {
 
 #logs {
   margin-top: 20px;
-  background-color: #9c59b6a2;
-  color: #87e0ec;
+  background-color: #010c0ea2;
+  color: #88e4de;
   border: 2px solid rgba(167, 167, 167, 0.795);
   border-radius: 5px;
   padding: 20px;
 }
 
 .nickname {
-  color: #f9f9f9;
+  color: #1ea3f0;
   margin-right: 10px;
 }
 
@@ -232,7 +232,7 @@ h1 {
 
 .btn:hover {
   cursor: pointer;
-  background-color: #a54646;
+  background-color:  #88e4de;
   transition: 0.5s;
 }
 

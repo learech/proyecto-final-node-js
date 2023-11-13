@@ -20,7 +20,7 @@ if (!user) {
   });
 } else {
   document.getElementById("username").innerHTML =
-    "🔮 Bienvenid@ " + user.toLocaleUpperCase() + "!.  Ya puedes chatear! :";
+    "👤 Bienvenid@ " + user.toLocaleUpperCase() + "!.  Ya puedes chatear! :";
   socket.emit("new", user);
 }
 
