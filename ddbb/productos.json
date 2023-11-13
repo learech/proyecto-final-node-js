@@ -40,10 +40,10 @@
     "code": "PROD18"
 }, {
     "id": 19,
-    "title": "dsdfgsd",
-    "description": "sdfdsf",
-    "price": "7878",
-    "thumbnail": "dsf",
+    "title": "Bermuda arquero",
+    "description": "Puma",
+    "price": "10000",
+    "thumbnail": "#",
     "stock": 80,
     "code": "PROD19"
 }, {
@@ -64,16 +64,16 @@
     "code": "PROD21"
 }, {
     "id": 22,
-    "title": "Equipo de mate",
-    "description": "Combo cuerina",
+    "title": "Camiseta arquero",
+    "description": "Converse",
     "price": "66389",
     "thumbnail": "#",
     "stock": 80,
     "code": "PROD22"
 }, {
     "id": 23,
-    "title": "Taza",
-    "description": "Taza sublimada",
+    "title": "pelota",
+    "description": "Mitre",
     "price": "652",
     "thumbnail": "#",
     "stock": 80,

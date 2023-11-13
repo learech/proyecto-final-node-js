@@ -122,7 +122,7 @@ describe("Testing Cart DAO", () => {
     const purchaseResult = await cartDao.finishPurchase(createdCart._id);
     assert.ok(purchaseResult);
   
-    //Solo chequeo que sea menor y no que esté vacio ya que pueden quedar los carritos sin stock cargados en el carrito.
+    //Chequeando que sea menor y no que esté vacio ya que pueden quedar los productos sin stock cargados en el carrito.
     const updatedCart = await cartDao.getCartById(createdCart._id);
     assert.ok(initialCart.products.length > updatedCart.products.length,);
   });

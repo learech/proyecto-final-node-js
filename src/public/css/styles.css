@@ -3,8 +3,12 @@
   padding: 0px;
 }
 
+.imagen{
+  width: 200px;
+  height: 200px;
+}
 body {
-  font-family: "Belanosima", sans-serif;
+  font-family: 'Oswald', sans-serif;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -14,7 +18,7 @@ body {
 }
 
 .header-content {
-  font-family: "Kanit", sans-serif;
+  font-family: 'Oswald', sans-serif;
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -40,7 +44,7 @@ body {
 }
 
 .cart-container {
-  background-image: url("https://www.elgrafico.com.ar/media/cache/pub_news_details_large/media/i/6e/8d/6e8dc8cf6247c5e1867cb33a929de413e1cb7ba8.jfif");
+  background-image: url("https://img.freepik.com/vector-gratis/sooccer-metal-gate-pictogram-print_1284-8509.jpg?w=826&t=st=1699902241~exp=1699902841~hmac=e4fa6b4d42990abfd98498d5357a8e3fa88a0e460bae58ba404321eb88807065");
   height: 600px;
   width: 100%;
   background-size: cover;
@@ -133,7 +137,7 @@ img {
 }
 
 .pie {
-  background: #fe5f50e2;
+  background: #50e4fee2;
   border-radius: 0 0 10px 10px;
   padding: 10px;
   text-align: center;
@@ -165,7 +169,7 @@ h1 {
 
 .bruju {
   margin: 8px 8px 0px 8px;
-  color: #ce87ec;
+  color: #87d4ec;
 }
 
 .dialogo {
@@ -192,13 +196,13 @@ h1 {
 }
 
 #chatbox:focus {
-  border: 2px solid #ce87ec;
+  border: 2px solid #87d8ec;
 }
 
 #logs {
   margin-top: 20px;
   background-color: #9c59b6a2;
-  color: #ce87ec;
+  color: #87e0ec;
   border: 2px solid rgba(167, 167, 167, 0.795);
   border-radius: 5px;
   padding: 20px;
@@ -210,7 +214,7 @@ h1 {
 }
 
 #form-paginate {
-  background-color: #fe5f50e2;
+  background-color: #50f2fee2;
   display: flex;
   justify-content: space-around;
   padding: 1% 15%;
@@ -220,7 +224,7 @@ h1 {
 
 .btn {
   padding: 3px 20px;
-  background-color: #48384e;
+  background-color: #b31212;
   color: #f9f9f9;
   border-radius: 3px;
   border: none;
@@ -228,14 +232,14 @@ h1 {
 
 .btn:hover {
   cursor: pointer;
-  background-color: #694f72;
+  background-color: #a54646;
   transition: 0.5s;
 }
 
 .btn-session {
   margin: 10px;
   padding: 3px 20px;
-  background-color: #6b4779;
+  background-color: #be1b1b;
   color: #f9f9f9;
   border-radius: 3px;
   border: none;
